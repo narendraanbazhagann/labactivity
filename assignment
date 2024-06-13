@@ -1,0 +1,72 @@
+import random
+names = ["John", "Emma", "Michael", "Olivia", "William", "Ava", "James", "Sophia", "Benjamin", "Isabella", "Daniel", "Mia", "Alexander", "Charlotte", "David", "Amelia", "Joseph", "Evelyn", "Henry", "Abigail", "Samuel", "Harper", "Emily", "Daniel", "Elizabeth", "Matthew", "Sofia", "Luke", "Lily", "Nathan", "Grace"]
+# Function to create result file
+def create_result_file(file_path):
+    with open(file_path, 'w') as file:
+        for i in range(30):
+            name = random.choice(names) + " " + random.choice(names)  # Concatenating two random names to simulate full names
+            reg_number = 65432100 + i + 1
+            grades = [random.choice(['O', 'A', 'B', 'C', 'D', 'U']) for _ in range(5)]
+            total_marks = sum([10 if grade == 'O' else 9 if grade == 'A' else 8 if grade == 'B' else 7 if grade == 'C' else 6 if grade == 'D' else 0 for grade in grades])
+            percentage = (total_marks / 50) * 100
+            file.write(f"{name}, {reg_number}, {','.join(grades)}, {total_marks}, {percentage:.2f}%\n")
+
+
+# Function to read and display file content
+def read_result_file(file_path):
+    with open(file_path, 'r') as file:
+        print(file.read())
+
+# Function to analyze student data
+def analyze_results(input_file, output_file):
+    with open(input_file, 'r') as input_file, open(output_file, 'w') as output_file:
+        # Skipping header line
+        student_90 = []
+        student_80 = []
+        student_70 = []
+        student_below_70 = []
+        next(input_file)
+        for line in input_file:
+            data = line.strip().split(', ')
+            name, reg_number, *grades, total_marks, percentage = data
+            percentage = int(percentage[:-1])  # Remove '%' and convert to integer
+            if percentage >= 90:
+                student_90.append([name, reg_number, total_marks, percentage])
+            elif percentage >= 80 and percentage < 90:
+                student_80.append([name, reg_number, total_marks, percentage])
+            elif percentage >= 70 and percentage < 80:
+                student_70.append([name, reg_number, total_marks, percentage])
+            elif percentage < 70:
+                student_below_70.append([name, reg_number, total_marks, percentage])
+        
+        output_file.write("Students scoring 90% and above:\n")
+        for data in student_90:
+            output_file.write(f"{data[0]}, {data[1]}, {data[2]}, {data[3]}%\n")
+        
+        output_file.write("Students scoring 80% and above but below 90%:\n")
+        for data in student_80:
+            output_file.write(f"{data[0]}, {data[1]}, {data[2]}, {data[3]}%\n")
+        
+        output_file.write("Students scoring 70% and above but below 80%:\n")
+        for data in student_70:
+            output_file.write(f"{data[0]}, {data[1]}, {data[2]}, {data[3]}%\n")
+        
+        output_file.write("Students scoring below 70%:\n")
+        for data in student_below_70:
+            output_file.write(f"{data[0]}, {data[1]}, {data[2]}, {data[3]}%\n")
+
+# Create result file
+create_result_file("result.txt")
+
+# Read and display file content
+print("Content of result.txt:")
+read_result_file("result.txt")
+
+# Analyze student data and write analysis to analysis.txt
+analyze_results("result.txt", "analysis.txt")
+print("Analysis completed. Please check analysis.txt for the results.") 
+
+f=open('result.txt','r')
+for i in range(30):
+    print(f.readline())
+f.close

@@ -1,0 +1,136 @@
+1. Generate a stream of random numbers and write them to a file
+import random
+def generate_random_numbers(filename, count=100):
+    with open(filename, 'w') as file:
+        for _ in range(count):
+            file.write(f"{random.random()}\n")
+
+generate_random_numbers('random_numbers.txt', 100)
+
+Output: This code will create a file named random_numbers.txt with 100 random floating-point numbers.
+
+
+2. Read the random numbers from the file and calculate their average
+def calculate_average(filename):
+    with open(filename, 'r') as file:
+        numbers = [float(line.strip()) for line in file]
+        return sum(numbers) / len(numbers) if numbers else 0
+
+average = calculate_average('random_numbers.txt')
+print(f"Average: {average}")
+
+Output:
+Average: 0.49649487027768024
+
+
+3. Read from a file and handle the case where the file does not exist
+def read_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"File {filename} not found.")
+        return None
+
+content = read_file('random_numbers.txt')
+print(content)
+
+Output:
+0.3745401188473625
+0.9507143064099162
+...
+(Contents of the file will be printed)
+
+4. User-defined exception NegativeNumberError
+class NegativeNumberError(Exception):
+    pass
+
+def check_for_negatives(numbers):
+    for number in numbers:
+        if number < 0:
+            raise NegativeNumberError(f"Negative number encountered: {number}")
+
+try:
+    numbers = [1, 2, 3, -4, 5]
+    check_for_negatives(numbers)
+except NegativeNumberError as e:
+    print(e)
+
+Output:
+Negative number encountered: -4
+
+
+5. Create a NumPy array of 10 random numbers and print them
+import numpy as np
+
+random_numbers = np.random.rand(10)
+print(random_numbers)
+
+Output:
+[0.37454012 0.95071431 0.73199394 0.59865848 0.15601864 0.15599452
+ 0.05808361 0.86617615 0.60111501 0.70807258]
+
+
+6. Program to add and remove items from a NumPy array
+def add_item(array, item):
+    return np.append(array, item)
+def remove_item(array, index):
+    return np.delete(array, index)
+array = np.array([1, 2, 3, 4, 5])
+array = add_item(array, 6)
+print("After adding an item:", array)
+array = remove_item(array, 2)
+print("After removing an item:", array)
+
+Output:
+After adding an item: [1 2 3 4 5 6]
+After removing an item: [1 2 4 5 6]
+
+
+7. Sort the NumPy array
+sorted_array = np.sort(random_numbers)
+print("Sorted array:", sorted_array)
+
+Output:
+Sorted array: [0.05808361 0.15599452 0.15601864 0.37454012 0.59865848 0.60111501
+ 0.70807258 0.73199394 0.86617615 0.95071431]
+
+
+8. Reshape a NumPy array into a 2x5 matrix
+reshaped_array = random_numbers.reshape(2, 5)
+print("Reshaped array (2x5):", reshaped_array)
+
+Output:
+Reshaped array (2x5): [[0.37454012 0.95071431 0.73199394 0.59865848 0.15601864]
+ [0.15599452 0.05808361 0.86617615 0.60111501 0.70807258]]
+
+
+9. Demonstrate indexing and slicing on the reshaped matrix
+print("Element at (1, 2):", reshaped_array[1, 2])
+print("First row:", reshaped_array[0, :])
+print("First column:", reshaped_array[:, 0])
+
+Output:
+Element at (1, 2): 0.8661761457749352
+First row: [0.37454012 0.95071431 0.73199394 0.59865848 0.15601864]
+First column: [0.37454012 0.15599452]
+
+
+10. Append new data to an existing file and read the updated file
+def append_to_file(filename, data):
+    with open(filename, 'a') as file:
+        file.write(data)
+
+def read_updated_file(filename):
+    with open(filename, 'r') as file:
+        return file.read()
+
+append_to_file('random_numbers.txt', "New data\n")
+updated_content = read_updated_file('random_numbers.txt')
+print(updated_content)
+
+Output:
+0.3745401188473625
+0.9507143064099162
+...
+New data

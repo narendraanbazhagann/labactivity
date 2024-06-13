@@ -1,0 +1,284 @@
+Low Level
+1.Multiplication Table
+number = 5
+for i in range(1, 11):
+    print(f"{number} x {i} = {number * i}")
+
+# Expected Output for number = 5:
+# 5 x 1 = 5
+# 5 x 2 = 10
+# 5 x 3 = 15
+# 5 x 4 = 20
+# 5 x 5 = 25
+# 5 x 6 = 30
+# 5 x 7 = 35
+# 5 x 8 = 40
+# 5 x 9 = 45
+# 5 x 10 = 50
+
+
+2.Print Each Fruit
+fruits = ["Apple", "Banana", "Cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# Expected Output:
+# Apple
+# Banana
+# Cherry
+
+
+3.Print Even Numbers Between 1 and 20
+for i in range(1, 21):
+    if i % 2 == 0:
+        print(i)
+
+# Expected Output:
+# 2
+# 4
+# 6
+# 8
+# 10
+# 12
+# 14
+# 16
+# 18
+# 20
+
+4.Calculate Factorial
+number = 5
+factorial = 1
+for i in range(1, number + 1):
+    factorial *= i
+print(f"The factorial of {number} is {factorial}")
+
+# Expected Output:
+# The factorial of 5 is 120
+
+5.Check if a Number is Prime
+number = 29
+is_prime = True
+
+if number < 2:
+    is_prime = False
+else:
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            is_prime = False
+            break
+
+if is_prime:
+    print(f"{number} is a prime number.")
+else:
+    print(f"{number} is not a prime number.")
+
+# Expected Output:
+# 29 is a prime number.
+
+6.Count Vowels in a String
+string = "Artificial Intelligence and Machine Learning"
+vowels = "aeiouAEIOU"
+count = 0
+
+for char in string:
+    if char in vowels:
+        count += 1
+
+print(f"The number of vowels in the given string is {count}")
+
+# Expected Output:
+# The number of vowels in the given string is 16
+
+
+
+Medium Level
+1.Number Pattern
+for i in range(1, 10):
+    for j in range(i):
+        print(i, end=" ")
+    print()
+
+# Expected Output:
+# 1 
+# 2 2 
+# 3 3 3 
+# 4 4 4 4 
+# 5 5 5 5 5 
+# 6 6 6 6 6 6 
+# 7 7 7 7 7 7 7 
+# 8 8 8 8 8 8 8 8 
+# 9 9 9 9 9 9 9 9 9
+
+2.Star Pattern
+for i in range(1, 6):
+    print("* " * i)
+for i in range(4, 0, -1):
+    print("* " * i)
+
+# Expected Output:
+# * 
+# * * 
+# * * * 
+# * * * * 
+# * * * * * 
+# * * * * 
+# * * * 
+# * * 
+# *
+
+3.Alphabet Pattern 'D'
+for row in range(7):
+    if row == 0 or row == 6:
+        print("****")
+    else:
+        print("*   *")
+
+# Expected Output:
+# ****
+# *   *
+# *   *
+# *   *
+# *   *
+# *   *
+# ****
+
+4.Alphabet Pattern 'M'
+for row in range(7):
+    for col in range(7):
+        if col == 0 or col == 6 or (row == col and col <= 3) or (row + col == 6 and col > 3):
+            print("*", end=" ")
+        else:
+            print(" ", end=" ")
+    print()
+
+# Expected Output:
+# *       * 
+# *       * 
+# * *   * * 
+# *   *   * 
+# *       * 
+# *       * 
+# *       * 
+
+
+5.Alphabet Pattern 'O'
+for row in range(7):
+    for col in range(5):
+        if (row == 0 or row == 6) and (col != 0 and col != 4):
+            print("*", end="")
+        elif (col == 0 or col == 4) and (row != 0 and row != 6):
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()
+
+# Expected Output:
+#  *** 
+# *   *
+# *   *
+# *   *
+# *   *
+# *   *
+#  *** 
+
+
+6.Right-Angled Triangle of Numbers
+n = 5
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        print(j, end="")
+    print()
+
+# Expected Output:
+# 1
+# 12
+# 123
+# 1234
+# 12345
+
+
+7.Inverted Right-Angled Triangle of Stars
+n = 5
+for i in range(n, 0, -1):
+    print("*" * i)
+
+# Expected Output:
+# *****
+# ****
+# ***
+# **
+# *
+
+8.Pyramid of Stars
+n = 4
+for i in range(n):
+    print(" " * (n - i - 1) + "*" * (2 * i + 1))
+
+# Expected Output:
+#    *
+#   ***
+#  *****
+# *******
+
+9.Diamond Pattern of Stars
+n = 5
+for i in range(n):
+    print(" " * (n - i - 1) + "*" * (2 * i + 1))
+for i in range(n - 2, -1, -1):
+    print(" " * (n - i - 1) + "*" * (2 * i + 1))
+
+# Expected Output:
+#     *
+#    ***
+#   *****
+#  *******
+# *********
+#  *******
+#   *****
+#    ***
+#     *
+
+10.Right-Angled Triangle of Incrementing Numbers
+n = 5
+num = 1
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        print(num, end=" ")
+        num += 1
+    print()
+
+# Expected Output:
+# 1 
+# 2 3 
+# 4 5 6 
+# 7 8 9 10 
+# 11 12 13 14 15
+
+
+High Level
+1.Password Validation
+import re
+
+def validate_password(password):
+    if len(password) < 6 or len(password) > 16:
+        return "Password length must be between 6 and 16 characters."
+    if not re.search(r"[a-z]", password):
+        return "Password must contain at least one lowercase letter."
+    if not re.search(r"[A-Z]", password):
+        return "Password must contain at least one uppercase letter."
+    if not re.search(r"[0-9]", password):
+        return "Password must contain at least one number."
+    if not re.search(r"[$#@]", password):
+        return "Password must contain at least one special character from [$#@]."
+    return "Password is valid."
+
+passwords = ["Password123", "Pass123", "password", "PASSWORD123", "Pass@123"]
+for pwd in passwords:
+    print(f"Password: {pwd}, Validation: {validate_password(pwd)}")
+
+# Expected Output:
+# Password: Password123, Validation: Password must contain at least one special character from [$#@].
+# Password: Pass123, Validation: Password must contain at least one special character from [$#@].
+# Password: password, Validation: Password must contain at least one uppercase letter.
+# Password: PASSWORD123, Validation: Password must contain at least one lowercase letter.
+# Password: Pass@123, Validation: Password is valid.

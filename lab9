@@ -1,0 +1,115 @@
+Low Level
+1.Handle ZeroDivisionError Exception
+
+try:
+    num = 10
+    divisor = 0
+    result = num / divisor
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero.")
+
+# Expected Output:
+# Error: Cannot divide by zero.
+
+2.Handle ValueError Exception for Integer Input
+
+try:
+    user_input = input("Enter an integer: ")
+    user_number = int(user_input)
+    print(f"You entered the integer: {user_number}")
+except ValueError:
+    print("Error: Input is not a valid integer.")
+
+# Example Interaction:
+# Input: abc
+# Output: Error: Input is not a valid integer.
+
+3.Handle TypeError Exception for Numerical Input
+try:
+    num1 = input("Enter the first number: ")
+    num2 = input("Enter the second number: ")
+    num1 = float(num1)
+    num2 = float(num2)
+    print(f"The sum is: {num1 + num2}")
+except ValueError:
+    print("Error: Both inputs must be numbers.")
+
+# Example Interaction:
+# Input: abc, 10
+# Output: Error: Both inputs must be numbers.
+
+
+Medium Level
+1.Handle FileNotFoundError Exception
+
+try:
+    file_name = "non_existent_file.txt"
+    with open(file_name, "r") as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print("Error: The file does not exist.")
+
+# Expected Output:
+# Error: The file does not exist.
+
+2.Handle IndexError Exception
+
+my_list = [1, 2, 3]
+
+try:
+    index = int(input("Enter the index you want to access: "))
+    print(f"Value at index {index}: {my_list[index]}")
+except IndexError:
+    print("Error: Index is out of range.")
+except ValueError:
+    print("Error: Invalid input, please enter an integer.")
+
+# Example Interaction:
+# Input: 5
+# Output: Error: Index is out of range.
+
+
+High Level
+1.Handle Multiple Exceptions
+
+try:
+    my_list = [1, 2, 3]
+    file_name = "non_existent_file.txt"
+
+    # IndexError
+    index = int(input("Enter the index you want to access: "))
+    print(f"Value at index {index}: {my_list[index]}")
+
+    # FileNotFoundError
+    with open(file_name, "r") as file:
+        content = file.read()
+        print(content)
+
+    # ZeroDivisionError
+    num = 10
+    divisor = int(input("Enter a divisor: "))
+    result = num / divisor
+    print(f"Result of division: {result}")
+
+except IndexError:
+    print("Error: Index is out of range.")
+except FileNotFoundError:
+    print("Error: The file does not exist.")
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero.")
+except ValueError:
+    print("Error: Invalid input, please enter a valid number.")
+
+# Example Interaction:
+# Input for index: 5
+# Output: Error: Index is out of range.
+#
+# Input for file: (No input needed, file error occurs immediately)
+# Output: Error: The file does not exist.
+#
+# Input for divisor: 0
+# Output: Error: Cannot divide by zero.
+#
+# Input for index: abc
+# Output: Error: Invalid input, please enter a valid number.

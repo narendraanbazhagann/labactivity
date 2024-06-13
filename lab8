@@ -1,0 +1,119 @@
+Low Level
+1.Temperature Conversion Module and Usage
+
+# Module: temperature_conversion.py
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+#use_temperature_conversion.py:
+
+# Program: use_temperature_conversion.py
+import temperature_conversion as tc
+
+celsius = 25
+fahrenheit = 77
+
+print(f"{celsius}°C to Fahrenheit: {tc.celsius_to_fahrenheit(celsius)}°F")
+print(f"{fahrenheit}°F to Celsius: {tc.fahrenheit_to_celsius(fahrenheit)}°C")
+
+# Expected Output:
+# 25°C to Fahrenheit: 77.0°F
+# 77°F to Celsius: 25.0°C
+
+
+
+
+
+2.Currency Conversion Module and Usage
+
+currency_conversion.py:
+# Module: currency_conversion.py
+def usd_to_eur(usd, rate=0.85):
+    return usd * rate
+
+def eur_to_usd(eur, rate=1.18):
+    return eur * rate
+
+use_currency_conversion.py:
+# Program: use_currency_conversion.py
+import currency_conversion as cc
+
+usd = 100
+eur = 85
+
+print(f"${usd} to Euros: €{cc.usd_to_eur(usd):.2f}")
+print(f"€{eur} to USD: ${cc.eur_to_usd(eur):.2f}")
+
+# Expected Output:
+# $100 to Euros: €85.00
+# €85 to USD: $100.30
+
+
+
+Medium Level
+1.Arithmetic Operations Module and Usage
+
+arithmetic_operations.py:
+# Module: arithmetic_operations.py
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero.")
+    return a / b
+
+use_arithmetic_operations.py:
+# Program: use_arithmetic_operations.py
+import arithmetic_operations as ao
+
+a, b = 10, 5
+
+print(f"{a} + {b} = {ao.add(a, b)}")
+print(f"{a} - {b} = {ao.subtract(a, b)}")
+print(f"{a} * {b} = {ao.multiply(a, b)}")
+print(f"{a} / {b} = {ao.divide(a, b)}")
+
+# Expected Output:
+# 10 + 5 = 15
+# 10 - 5 = 5
+# 10 * 5 = 50
+# 10 / 5 = 2.0
+
+
+
+
+High Level
+Decimal and Binary Conversion Module and Usage
+
+conversion.py:
+# Module: conversion.py
+def decimal_to_binary(decimal):
+    return bin(decimal)[2:]
+
+def binary_to_decimal(binary):
+    return int(binary, 2)
+
+use_conversion.py:
+
+# Program: use_conversion.py
+import conversion
+
+decimal = 10
+binary = "1010"
+
+print(f"Decimal {decimal} to binary: {conversion.decimal_to_binary(decimal)}")
+print(f"Binary {binary} to decimal: {conversion.binary_to_decimal(binary)}")
+
+# Expected Output:
+# Decimal 10 to binary: 1010
+# Binary 1010 to decimal: 10
